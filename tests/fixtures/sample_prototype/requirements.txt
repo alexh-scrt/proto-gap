@@ -1,0 +1,37 @@
+# Sample prototype requirements fixture for proto_gap integration tests.
+# This file intentionally lists common prototype dependencies that
+# pair with the gaps detected in app.py.
+
+# Web framework
+flask==2.3.3
+werkzeug==2.3.7
+
+# HTTP client (used with verify=False in the fixture)
+requests==2.31.0
+
+# Database ORM (create_all pattern detected by MIG002)
+SQLAlchemy==2.0.21
+
+# JWT handling (hardcoded JWT_SECRET detected by AUTH001)
+PyJWT==2.8.0
+
+# YAML parsing (unsafe yaml.load detected by SEC004)
+PyYAML==6.0.1
+
+# CORS support (wildcard CORS detected by AUTH004)
+flask-cors==4.0.0
+
+# Password hashing — NOTE: using MD5/SHA1 instead (detected by SEC005)
+# bcrypt is NOT listed here, indicating weak hashing is in use
+
+# Environment variable loading — NOT listed here
+# python-dotenv is absent, indicating .env is not used properly
+
+# Migrations — NOT listed here
+# alembic is absent, triggering MIG001
+
+# Structured logging — NOT listed here
+# structlog is absent, triggering LOG001/LOG002
+
+# Testing — NOT listed here
+# pytest is absent, triggering TST001/TST002
